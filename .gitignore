@@ -1,0 +1,5 @@
+canva-export/
+*.zip
+.netlify/
+node_modules/
+dist/

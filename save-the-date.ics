@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Isabela Benjamin Wedding//Invitation//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:isabela-benjamin-wedding-20261010@isaybenjaboda.site
+DTSTAMP:20260508T000000Z
+DTSTART:20261010T220000Z
+DTEND:20261011T050000Z
+SUMMARY:Boda de Isabela y Benjamin
+LOCATION:Barranquilla, Colombia
+DESCRIPTION:Invitación de boda de Isabela María Ferreira Aparicio y Benjamin Ricardo Collante Juvinao.
+END:VEVENT
+END:VCALENDAR
