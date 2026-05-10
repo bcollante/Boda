@@ -41,8 +41,6 @@
     </div>
   </section>
 
-  <div class="petal-field" id="petalField" aria-hidden="true"></div>
-
   <div class="site" id="site" aria-hidden="true">
     <header class="nav">
       <a class="brand" href="#inicio">I &amp; B</a>
@@ -99,11 +97,11 @@
           <div class="copy" data-animate>
             <p class="kicker">Luxury wedding experience</p>
             <h2>Una invitación con alma de papel</h2>
-            <p>La estética conserva el sobre crema, el sello dorado, las flores en relieve y la ilustración tropical del diseño original, ahora con una apertura cinematográfica, pétalos flotando y movimiento sutil en cada sección.</p>
+            <p>La estética conserva el sobre crema, el sello dorado, las flores en relieve y la ilustración tropical del diseño original, ahora con una apertura cinematográfica y movimiento sutil en cada sección.</p>
             <div class="feature-list">
               <span>Apertura realista</span>
               <span>Parallax</span>
-              <span>QR personalizado</span>
+              <span>Hotel El Prado</span>
               <span>RSVP digital</span>
             </div>
           </div>
@@ -136,8 +134,8 @@
         </div>
       </section>
 
-      <section class="section" id="dress-code">
-        <div class="section__inner split split--wide">
+      <section class="section dress-section" id="dress-code">
+        <div class="section__inner split split--dress">
           <div class="copy" data-animate>
             <p class="kicker">Guía para invitados</p>
             <h2>Dress code</h2>
@@ -148,7 +146,7 @@
               <li>La intención es verse formal sin perder la vibra del Caribe.</li>
             </ul>
           </div>
-          <div class="frame-image frame-image--tall" data-animate data-parallax="0.04">
+          <div class="frame-image frame-image--dress" data-animate data-parallax="0.025">
             <img src="assets/dresscode-canva.png" alt="Moodboard de dress code para hombres y mujeres" />
           </div>
         </div>
@@ -186,33 +184,18 @@
         </div>
       </section>
 
-      <section class="section gallery" id="galeria">
-        <div class="section__inner">
-          <div class="section-head" data-animate>
-            <p class="kicker">Galería</p>
-            <h2>La estética de la boda</h2>
-          </div>
-          <div class="gallery-grid" data-animate>
-            <button type="button"><img src="assets/canva-envelope-closed.png" alt="Sobre cerrado" /></button>
-            <button type="button"><img src="assets/canva-envelope-open.png" alt="Sobre abierto" /></button>
-            <button type="button"><img src="assets/canva-invitation-card.png" alt="Tarjeta de invitación" /></button>
-            <button type="button"><img src="assets/canva-rsvp-flower.png" alt="Flor RSVP" /></button>
-          </div>
-        </div>
-      </section>
-
       <section class="section section--cream" id="mapa">
         <div class="section__inner split">
           <div class="copy" data-animate>
-            <p class="kicker">Mapa interactivo</p>
-            <h2>Barranquilla, Colombia</h2>
-            <p>El punto exacto de ceremonia y recepción se puede actualizar aquí cuando esté confirmado. Por ahora dejamos la ciudad lista como referencia para viaje y hospedaje.</p>
+            <p class="kicker">Ubicación</p>
+            <h2>Hotel El Prado</h2>
+            <p>Carrera 54 No. 70-10, Barrio El Prado, Barranquilla. Este mapa abre directamente la ubicación del hotel para que puedas planear tu llegada con facilidad.</p>
             <div class="actions">
-              <a class="button button--dark" href="https://www.google.com/maps/search/?api=1&query=Barranquilla%20Colombia" target="_blank" rel="noreferrer">Abrir en Google Maps</a>
+              <a class="button button--dark" href="https://www.google.com/maps/search/?api=1&query=Hotel%20El%20Prado%20Carrera%2054%20No%2070-10%20Barranquilla%20Colombia" target="_blank" rel="noreferrer">Abrir en Google Maps</a>
             </div>
           </div>
           <div class="map-card" data-animate>
-            <iframe title="Mapa de Barranquilla" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barranquilla%2C%20Colombia&output=embed"></iframe>
+            <iframe title="Mapa del Hotel El Prado en Barranquilla" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Hotel%20El%20Prado%20Carrera%2054%20No%2070-10%20Barranquilla%20Colombia&output=embed"></iframe>
           </div>
         </div>
       </section>
@@ -231,20 +214,6 @@
               <a class="button" id="appleLink" href="#musica">Apple Music</a>
               <button class="button button--primary" id="musicToggle" type="button">Sonido ambiente</button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--cream qr-section" id="qr">
-        <div class="section__inner split">
-          <div class="copy" data-animate>
-            <p class="kicker">Pase personalizado</p>
-            <h2>Invitación individual</h2>
-            <p id="qrCopy">Este QR abre esta invitación con el nombre del invitado incluido. Puedes compartir links como <strong>?invitado=Nombre%20Apellido</strong>.</p>
-          </div>
-          <div class="qr-card" data-animate>
-            <img id="qrImage" alt="QR personalizado de la invitación" />
-            <p id="qrName">Invitado especial</p>
           </div>
         </div>
       </section>
@@ -299,11 +268,6 @@
 
     <footer class="footer">Con amor, Isabela &amp; Benjamin</footer>
   </div>
-
-  <dialog class="lightbox" id="lightbox">
-    <button type="button" id="closeLightbox" aria-label="Cerrar galería">×</button>
-    <img id="lightboxImage" alt="" />
-  </dialog>
 
   <script src="app.js" defer></script>
 </body>

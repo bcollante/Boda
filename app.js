@@ -9,24 +9,17 @@ const body = document.body;
 const loader = document.getElementById('loader');
 const openButton = document.getElementById('openInvitation');
 const site = document.getElementById('site');
-const petalField = document.getElementById('petalField');
 const guestLine = document.getElementById('guestLine');
 const heroGuest = document.getElementById('heroGuest');
 const guestHidden = document.getElementById('guestHidden');
 const nameInput = document.getElementById('nombre');
-const qrImage = document.getElementById('qrImage');
-const qrName = document.getElementById('qrName');
 const form = document.getElementById('rsvpForm');
 const formStatus = document.getElementById('formStatus');
 const submitButton = document.getElementById('rsvpSubmit');
 const musicToggle = document.getElementById('musicToggle');
 const spotifyLink = document.getElementById('spotifyLink');
 const appleLink = document.getElementById('appleLink');
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const closeLightbox = document.getElementById('closeLightbox');
 let ambientAudio;
-let petalTimer;
 
 window.addEventListener('load', () => {
   window.setTimeout(() => {
@@ -51,12 +44,6 @@ function applyGuestName() {
   }
 
   guestHidden.value = safeGuest;
-  qrName.textContent = safeGuest;
-
-  const url = new URL(window.location.href);
-  if (guest) url.searchParams.set('invitado', guest);
-  const qrData = encodeURIComponent(url.toString());
-  qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data=${qrData}`;
 }
 
 function playPaperSound() {
@@ -99,25 +86,9 @@ function playPaperSound() {
   shimmer.stop(context.currentTime + 0.72);
 }
 
-function releasePetals(count = 58) {
-  for (let i = 0; i < count; i += 1) {
-    const petal = document.createElement('span');
-    petal.className = 'petal';
-    petal.style.left = `${Math.random() * 100}vw`;
-    petal.style.setProperty('--size', `${Math.random() * 12 + 8}px`);
-    petal.style.setProperty('--drift', `${(Math.random() - 0.5) * 340}px`);
-    petal.style.setProperty('--spin', `${Math.random() * 760 + 220}deg`);
-    petal.style.setProperty('--duration', `${Math.random() * 4 + 5}s`);
-    petal.style.animationDelay = `${Math.random() * 1.2}s`;
-    petalField.appendChild(petal);
-    window.setTimeout(() => petal.remove(), 9800);
-  }
-}
-
 function openInvitation() {
   if (body.classList.contains('opened')) return;
   playPaperSound();
-  releasePetals(70);
   body.classList.add('opened');
   openButton.setAttribute('aria-expanded', 'true');
   site.setAttribute('aria-hidden', 'false');
@@ -125,10 +96,6 @@ function openInvitation() {
     body.classList.remove('locked');
     document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
   }, 2100);
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    petalTimer = window.setInterval(() => releasePetals(4), 3200);
-  }
 }
 
 openButton.addEventListener('click', openInvitation);
@@ -261,20 +228,6 @@ form.addEventListener('submit', async (event) => {
     submitButton.disabled = false;
     submitButton.textContent = 'RSVP now';
   }
-});
-
-document.querySelectorAll('.gallery-grid button').forEach((button) => {
-  button.addEventListener('click', () => {
-    const image = button.querySelector('img');
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-    lightbox.showModal();
-  });
-});
-
-closeLightbox.addEventListener('click', () => lightbox.close());
-lightbox.addEventListener('click', (event) => {
-  if (event.target === lightbox) lightbox.close();
 });
 
 applyGuestName();

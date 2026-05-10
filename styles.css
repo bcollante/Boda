@@ -265,29 +265,6 @@ body.opened .envelope-card {
 
 body.opened .wax-glow { opacity: 0; transform: scale(2.2); }
 
-.petal-field {
-  position: fixed;
-  inset: 0;
-  z-index: 35;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.petal {
-  position: absolute;
-  top: -24px;
-  width: var(--size);
-  height: calc(var(--size) * .58);
-  border-radius: 80% 20% 70% 25%;
-  background: linear-gradient(135deg, rgba(255, 236, 194, .94), rgba(235, 143, 115, .72));
-  opacity: .86;
-  animation: petalFall var(--duration) linear forwards;
-}
-
-@keyframes petalFall {
-  to { transform: translate3d(var(--drift), 112vh, 0) rotate(var(--spin)); opacity: 0; }
-}
-
 .site {
   opacity: 0;
   transform: translateY(24px);
@@ -538,6 +515,16 @@ body.opened .site {
 }
 
 .split--wide { grid-template-columns: .8fr 1.2fr; }
+.split--dress {
+  grid-template-columns: minmax(260px, .36fr) minmax(560px, 1.64fr);
+  align-items: start;
+}
+
+.dress-section .copy {
+  max-width: 430px;
+  position: sticky;
+  top: 104px;
+}
 
 .frame-image {
   position: relative;
@@ -560,6 +547,21 @@ body.opened .site {
 }
 
 .frame-image--tall img { max-height: 1120px; }
+.frame-image--dress {
+  align-self: stretch;
+  overflow: visible;
+}
+
+.frame-image--dress::after { display: none; }
+
+.frame-image--dress img {
+  width: min(100%, 1040px);
+  max-height: none;
+  margin-left: auto;
+  transform: scale(1.14);
+  transform-origin: 50% 12%;
+}
+
 .frame-image--small img { width: min(360px, 88%); margin: 0 auto; }
 
 .feature-list {
@@ -657,31 +659,6 @@ h3 {
   top: 96px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.gallery-grid button {
-  appearance: none;
-  min-height: 280px;
-  padding: 0;
-  border: 1px solid var(--line);
-  background: rgba(255, 243, 215, .05);
-  cursor: zoom-in;
-  overflow: hidden;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform .4s ease;
-}
-
-.gallery-grid button:hover img { transform: scale(1.04); }
-
 .map-card {
   min-height: 430px;
   border: 1px solid var(--line-dark);
@@ -695,33 +672,6 @@ h3 {
   min-height: 430px;
   border: 0;
   filter: saturate(.86) contrast(.95);
-}
-
-.qr-card {
-  justify-self: center;
-  display: grid;
-  gap: 16px;
-  place-items: center;
-  width: min(100%, 380px);
-  padding: 28px;
-  border: 1px solid var(--line-dark);
-  background: rgba(255, 252, 243, .74);
-  box-shadow: 0 26px 60px rgba(64, 42, 20, .16);
-}
-
-.qr-card img {
-  width: 260px;
-  aspect-ratio: 1;
-  border: 12px solid #fffaf0;
-}
-
-.qr-card p {
-  margin: 0;
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  font-style: italic;
-  text-align: center;
 }
 
 .rsvp-section {
@@ -847,36 +797,6 @@ textarea:focus {
   transform: translateY(0);
 }
 
-.lightbox {
-  width: min(96vw, 980px);
-  max-height: 92svh;
-  padding: 0;
-  border: 1px solid var(--line);
-  background: #fffaf2;
-  color: #20170f;
-}
-
-.lightbox::backdrop { background: rgba(52, 36, 20, .5); }
-.lightbox img {
-  width: 100%;
-  max-height: 90svh;
-  object-fit: contain;
-}
-
-.lightbox button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: rgba(5, 4, 3, .72);
-  color: var(--ivory);
-  font-size: 1.7rem;
-  cursor: pointer;
-}
-
 @media (max-width: 920px) {
   .nav {
     align-items: flex-start;
@@ -892,6 +812,7 @@ textarea:focus {
   .hero__grid,
   .split,
   .split--wide,
+  .split--dress,
   .barranquilla-grid,
   .rsvp-layout {
     grid-template-columns: 1fr;
@@ -899,8 +820,15 @@ textarea:focus {
 
   .hero__art { order: -1; }
   .hero__art img { max-height: 760px; }
+  .frame-image--dress img {
+    width: 100%;
+    transform: none;
+  }
+  .dress-section .copy {
+    max-width: none;
+    position: static;
+  }
   .experience-cards { position: static; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 620px) {
@@ -919,8 +847,6 @@ textarea:focus {
   .countdown div:nth-child(2) { border-right: 0; }
   .countdown div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .details-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-grid button { min-height: 220px; }
   .rsvp-form { border-width: 6px; }
 }
 
@@ -1048,10 +974,6 @@ body.opened .envelope-card {
   transform: translateY(-168px) scale(.88) rotateX(0);
 }
 
-.petal {
-  background: linear-gradient(135deg, rgba(255, 246, 220, .96), rgba(237, 145, 116, .72));
-}
-
 .nav {
   border-bottom-color: var(--canva-line);
   background: rgba(255, 250, 242, .78);
@@ -1063,7 +985,6 @@ body.opened .envelope-card {
 
 .hero,
 .section,
-.gallery,
 .music-section,
 .invitation-story,
 .rsvp-section {
@@ -1127,8 +1048,7 @@ h3 {
   color: #fffaf2;
 }
 
-.countdown-card,
-.gallery-grid button {
+.countdown-card {
   border-color: var(--canva-line);
   background: rgba(255, 250, 242, .68);
   box-shadow: 0 22px 58px rgba(91, 61, 28, .1);
@@ -1168,18 +1088,6 @@ h3 {
 .rsvp-submit {
   background: #fff0d6;
   color: #120c08;
-}
-
-.lightbox {
-  border-color: var(--canva-line);
-  background: #fffaf2;
-}
-
-.lightbox::backdrop { background: rgba(52, 36, 20, .5); }
-.lightbox button {
-  border-color: var(--canva-line);
-  background: rgba(255, 250, 242, .82);
-  color: var(--canva-ink);
 }
 
 @media (max-width: 620px) {

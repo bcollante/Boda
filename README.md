@@ -28,7 +28,7 @@ Comparte URLs con nombre:
 https://tu-dominio.netlify.app/?invitado=Nombre%20Apellido
 ```
 
-La página personaliza el saludo, prellena el RSVP y genera un QR con esa URL.
+La página personaliza el saludo y prellena el RSVP con ese nombre.
 
 ## Ediciones rápidas
 
