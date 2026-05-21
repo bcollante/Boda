@@ -515,8 +515,12 @@ body.opened .site {
 }
 
 .split--wide { grid-template-columns: .8fr 1.2fr; }
-.split--dress {
-  grid-template-columns: minmax(260px, .36fr) minmax(560px, 1.64fr);
+.dress-layout {
+  width: min(1260px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, .34fr) minmax(0, 1.66fr);
+  gap: clamp(30px, 5vw, 72px);
   align-items: start;
 }
 
@@ -547,19 +551,40 @@ body.opened .site {
 }
 
 .frame-image--tall img { max-height: 1120px; }
-.frame-image--dress {
-  align-self: stretch;
-  overflow: visible;
+
+.dress-board {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(14px, 2vw, 24px);
+  align-items: end;
 }
 
-.frame-image--dress::after { display: none; }
+.dress-board figure {
+  min-height: 250px;
+  display: grid;
+  place-items: end center;
+  margin: 0;
+  padding: clamp(16px, 2.4vw, 28px);
+  border: 1px solid rgba(116, 84, 42, .16);
+  background: rgba(255, 250, 242, .56);
+  box-shadow: 0 24px 50px rgba(91, 61, 28, .08);
+  overflow: hidden;
+}
 
-.frame-image--dress img {
-  width: min(100%, 1040px);
-  max-height: none;
-  margin-left: auto;
-  transform: scale(1.14);
-  transform-origin: 50% 12%;
+.dress-board img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 18px 24px rgba(91, 61, 28, .12));
+}
+
+.dress-board .dress-row--wide {
+  grid-column: 1 / -1;
+}
+
+.dress-board .dress-row--wide img {
+  max-height: 360px;
 }
 
 .frame-image--small img { width: min(360px, 88%); margin: 0 auto; }
@@ -657,6 +682,56 @@ h3 {
   background: var(--line-dark);
   position: sticky;
   top: 96px;
+}
+
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 26px);
+}
+
+.recommendation-card {
+  display: grid;
+  align-content: start;
+  overflow: hidden;
+  border: 1px solid rgba(116, 84, 42, .18);
+  background: rgba(255, 250, 242, .72);
+  box-shadow: 0 24px 54px rgba(91, 61, 28, .09);
+}
+
+.recommendation-card--wide {
+  grid-column: span 3;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  align-items: center;
+}
+
+.recommendation-card img {
+  width: 100%;
+  height: clamp(300px, 32vw, 470px);
+  object-fit: cover;
+  object-position: center;
+  background: #fffaf2;
+}
+
+.recommendation-card--wide img {
+  height: clamp(320px, 30vw, 460px);
+}
+
+.recommendation-card div {
+  padding: clamp(22px, 3vw, 36px);
+}
+
+.recommendation-card span {
+  color: var(--coral);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.recommendation-card p {
+  margin: 0;
+  color: #604f3e;
+  line-height: 1.7;
 }
 
 .map-card {
@@ -812,7 +887,7 @@ textarea:focus {
   .hero__grid,
   .split,
   .split--wide,
-  .split--dress,
+  .dress-layout,
   .barranquilla-grid,
   .rsvp-layout {
     grid-template-columns: 1fr;
@@ -820,13 +895,33 @@ textarea:focus {
 
   .hero__art { order: -1; }
   .hero__art img { max-height: 760px; }
-  .frame-image--dress img {
-    width: 100%;
-    transform: none;
-  }
   .dress-section .copy {
     max-width: none;
     position: static;
+  }
+  .dress-board {
+    grid-template-columns: 1fr;
+  }
+  .dress-board .dress-row--wide {
+    grid-column: auto;
+  }
+  .dress-board figure {
+    min-height: auto;
+  }
+  .dress-board img,
+  .dress-board .dress-row--wide img {
+    max-height: none;
+  }
+  .recommendation-grid,
+  .recommendation-card--wide {
+    grid-template-columns: 1fr;
+  }
+  .recommendation-card--wide {
+    grid-column: auto;
+  }
+  .recommendation-card img,
+  .recommendation-card--wide img {
+    height: clamp(260px, 56vw, 420px);
   }
   .experience-cards { position: static; }
 }
@@ -848,6 +943,21 @@ textarea:focus {
   .countdown div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .details-grid { grid-template-columns: 1fr; }
   .rsvp-form { border-width: 6px; }
+  .dress-board {
+    gap: 14px;
+  }
+  .dress-board figure {
+    padding: 10px;
+  }
+  .recommendation-card img,
+  .recommendation-card--wide img {
+    height: auto;
+    min-height: 220px;
+    object-fit: contain;
+  }
+  .recommendation-card div {
+    padding: 20px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -986,7 +1096,6 @@ body.opened .envelope-card {
 .hero,
 .section,
 .music-section,
-.invitation-story,
 .rsvp-section {
   color: var(--canva-ink);
   background:
